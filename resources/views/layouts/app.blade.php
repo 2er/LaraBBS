@@ -18,7 +18,7 @@
 <div id="app" class="{{ route_class() }}-page">
 
     @include('layouts._header')
-
+    @include('layouts._message')
     <div class="container">
 
         @yield('content')
