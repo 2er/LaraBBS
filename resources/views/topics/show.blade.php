@@ -43,6 +43,7 @@
                         {!! $topic->body !!}
                     </div>
 
+                    @if( Auth::check() && Auth::id() == $topic->user_id )
                     <div class="operate">
                         <hr>
                         <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-default btn-xs" role="button">
@@ -52,6 +53,7 @@
                             <i class="glyphicon glyphicon-trash"></i> 删除
                         </a>
                     </div>
+                    @endif
 
                 </div>
             </div>
