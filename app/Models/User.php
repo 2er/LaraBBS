@@ -17,6 +17,8 @@ class User extends Authenticatable
 
     use Traits\ActiveUserHelper;
 
+    use Traits\LastActivedAtHelper;
+
     /**
      * The attributes that are mass assignable.
      *
