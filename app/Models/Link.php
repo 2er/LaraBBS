@@ -9,7 +9,7 @@ class Link extends Model
 {
     protected $fillable = ['title', 'link'];
 
-    protected $cache_key = 'larabbs_links';
+    public $cache_key = 'larabbs_links';
     protected $cache_expire_in_minutes = 1440;
 
     public function getAllCached()
