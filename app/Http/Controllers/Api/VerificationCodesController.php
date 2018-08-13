@@ -9,9 +9,20 @@ use Cache;
 
 class VerificationCodesController extends Controller
 {
-    public function store (VerificationCodeRequst $requst, EasySms $easySms)
+    public function store (VerificationCodeRequst $request, EasySms $easySms)
     {
-        $phone = $requst->phone;
+        $captchaData = Cache::get($request->captcha_key);
+
+        if (!$captchaData) {
+            return $this->response->error('图片验证码已失效',422);
+        }
+
+        if (!hash_equals($captchaData['code'],$request->captcha_code)) {
+            Cache::forget($this->captcha_key);
+            return $this->response->errorUnauthorized('验证码错误');
+        }
+
+        $phone = $request->phone;
 
         if (!app()->environment('production')) {
             $code = '1234';
