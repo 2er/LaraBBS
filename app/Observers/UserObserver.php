@@ -16,7 +16,7 @@ class UserObserver
 
     public function updating(User $user)
     {
-        //
+
     }
 
     public function saving(User $user)
