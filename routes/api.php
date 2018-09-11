@@ -53,6 +53,12 @@ $api->version('v1', [
         // 分类列表
         $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
 
+        // 话题列表
+        $api->get('topics', 'TopicsController@index')->name('api.topics.index');
+
+        // 指定用户话题列表
+        $api->get('users/{user}/topics', 'TopicsController@userIndex')->name('api.users.topics.index');
+
         // 需要token验证的接口
         $api->group(['middleware' => 'api.auth'], function ($api) {
 

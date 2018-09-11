@@ -23,15 +23,20 @@ class TopicRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'title' => 'required|string',
-            'body' => 'required|string',
-            'category_id' => 'required|exists:categories,id'
-        ];
 
-
-
-        return $rules;
+        switch ($this->method()) {
+            case 'POST':
+            case 'PATCH':
+                return [
+                    'title' => 'required|string',
+                    'body' => 'required|string',
+                    'category_id' => 'required|exists:categories,id'
+                ];
+                break;
+            default:
+                return [];
+                break;
+        }
     }
 
     public function attributes()
