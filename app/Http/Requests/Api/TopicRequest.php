@@ -29,6 +29,8 @@ class TopicRequest extends FormRequest
             'category_id' => 'required|exists:categories,id'
         ];
 
+
+
         return $rules;
     }
 
