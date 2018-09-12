@@ -84,7 +84,10 @@ $api->version('v1', [
             $api->delete('topics/{topic}', 'TopicsController@destroy')->name('api.topics.destroy');
 
             // 添加回复
-            $api->post('replies', 'RepliesController@store')->name('api.replies.store');
+            $api->post('topics/{topic}/replies', 'RepliesController@store')->name('api.topics.replies.store');
+
+            // 删除回复
+            $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')->name('api.topics.replies.destroy');
         });
 
     });
