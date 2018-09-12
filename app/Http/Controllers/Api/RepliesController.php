@@ -5,10 +5,27 @@ namespace App\Http\Controllers\Api;
 use App\Models\Reply;
 use App\Http\Requests\Api\ReplyRequest;
 use App\Models\Topic;
+use App\Models\User;
 use App\Transformers\ReplyTransformer;
 
 class RepliesController extends Controller
 {
+    public function index(Topic $topic)
+    {
+        $replies = $topic->replies()
+            ->paginate(20);
+
+        return $this->response->paginator($replies, new ReplyTransformer());
+    }
+
+    public function userIndex(User $user)
+    {
+        $replies = Reply::where('user_id', $user->id)
+            ->paginate(20);
+
+        return $this->response->paginator($replies, new ReplyTransformer());
+    }
+
     public function store(ReplyRequest $request, Topic $topic, Reply $reply)
     {
         $reply->fill($request->all());
