@@ -28,7 +28,7 @@ class TopicsController extends Controller
 
         $topics = $query->paginate(20);
 
-        return $this->response->paginator($topics, new TopicTransformer())->setStatusCode(201);
+        return $this->response->paginator($topics, new TopicTransformer());
     }
 
     public function store(TopicRequest $request, Topic $topic)

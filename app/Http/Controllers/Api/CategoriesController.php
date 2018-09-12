@@ -11,6 +11,6 @@ class CategoriesController extends Controller
     {
         $categories = $category->all();
 
-        return $this->response->collection($categories, new CategoryTransformer())->setStatusCode(201);
+        return $this->response->collection($categories, new CategoryTransformer());
     }
 }

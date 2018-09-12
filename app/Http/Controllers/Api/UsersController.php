@@ -58,6 +58,6 @@ class UsersController extends Controller
 
         $user->update($attributes);
 
-        return $this->response->item($user, new UserTransformer())->setStatusCode(201);
+        return $this->response->item($user, new UserTransformer());
     }
 }
