@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use Overtrue\EasySms\EasySms;
-use App\Http\Requests\Api\VerificationCodeRequst;
+use App\Http\Requests\Api\VerificationCodeRequest;
 use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
 use Cache;
 
 class VerificationCodesController extends Controller
 {
-    public function store (VerificationCodeRequst $request, EasySms $easySms)
+    public function store (VerificationCodeRequest $request, EasySms $easySms)
     {
         $captchaData = Cache::get($request->captcha_key);
 

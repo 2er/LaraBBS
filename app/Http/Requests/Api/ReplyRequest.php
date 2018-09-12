@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Api;
 
-use Dingo\Api\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class VerificationCodeRequst extends FormRequest
+class ReplyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,7 @@ class VerificationCodeRequst extends FormRequest
     public function rules()
     {
         return [
-            'captcha_key' => 'required|string',
-            'captcha_code' => 'required|string'
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'captcha_key' => '图片验证码 key',
-            'captcha_code' => '图片验证码'
+            //
         ];
     }
 }
